@@ -313,9 +313,15 @@ export default function History() {
                 {/* Provider Name */}
                 <div className="flex items-center justify-center space-x-2">
                   <User className="h-5 w-5 text-purple-700" />
-                  <span className="font-roboto text-purple-700 font-medium text-lg">
+                  <button
+                    onClick={() => {
+                      setShowRatingModal(false);
+                      navigate('/provider/1');
+                    }}
+                    className="font-roboto text-purple-700 font-medium text-lg hover:underline"
+                  >
                     {selectedRequest?.providerName || "Dolores Maria Quintana M"}
-                  </span>
+                  </button>
                 </div>
 
                 {/* Rating Section */}
