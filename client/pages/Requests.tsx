@@ -6,7 +6,8 @@ import HamburgerMenu from "@/components/HamburgerMenu";
 
 interface RequestItem {
   id: string;
-  status: "EN CAMINO" | "COMPLETADO" | "PENDIENTE";
+  status: "Solicitud Asignada" | "COMPLETADO" | "PENDIENTE";
+  statusDetail: "EN CAMINO" | "FINALIZADO" | "PENDIENTE";
   paymentMethod: "Efectivo" | "Tarjeta";
   date: string;
   time: string;
@@ -18,11 +19,12 @@ interface RequestItem {
 const mockRequests: RequestItem[] = [
   {
     id: "1",
-    status: "EN CAMINO",
+    status: "Solicitud Asignada",
+    statusDetail: "EN CAMINO",
     paymentMethod: "Efectivo",
     date: "2025-06-27",
     time: "23:06",
-    serviceName: "Servicio de Ejemplo",
+    serviceName: "Ayuda Universitaria",
     description: "Descripción de ejemplo del servicio",
     isPaid: false,
   },
