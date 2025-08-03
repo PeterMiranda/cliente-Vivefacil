@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { Button } from "@/components/ui/button";
-import { Menu, X, History, Home, MessageSquare, FileText, User, Settings, LogOut } from "lucide-react";
+import { Menu, X, History, Home, MessageSquare, FileText, User, Settings, LogOut, Plus } from "lucide-react";
 
 interface HamburgerMenuProps {
   className?: string;
