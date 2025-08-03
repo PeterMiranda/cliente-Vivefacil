@@ -54,9 +54,7 @@ export default function Requests() {
       {/* Header */}
       <div className="bg-purple-700 text-white px-4 py-2">
         <div className="flex items-center justify-between">
-          <Button variant="ghost" size="sm" className="text-white p-2">
-            <Menu className="h-6 w-6" />
-          </Button>
+          <HamburgerMenu />
           
           <div className="flex-1 flex justify-center">
             <div className="bg-purple-700 rounded-full px-8 py-2">
