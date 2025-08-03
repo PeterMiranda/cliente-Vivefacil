@@ -36,6 +36,7 @@ export default function History() {
   const [sortOrder, setSortOrder] = useState<"Ascendente" | "Descendente">("Descendente");
   const [selectedRequest, setSelectedRequest] = useState<HistoryRequest | null>(null);
   const [showConfirmModal, setShowConfirmModal] = useState(false);
+  const [showRatingModal, setShowRatingModal] = useState(false);
   const navigate = useNavigate();
 
   const handleBack = () => {
