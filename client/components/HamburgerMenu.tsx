@@ -76,6 +76,14 @@ export default function HamburgerMenu({ className = "" }: HamburgerMenuProps) {
           </button>
 
           <button
+            onClick={() => handleNavigate("/service-request")}
+            className="w-full flex items-center px-6 py-3 text-left hover:bg-gray-100 transition-colors"
+          >
+            <Plus className="h-5 w-5 text-gray-600 mr-3" />
+            <span className="font-abeezee text-gray-800">Nueva Solicitud</span>
+          </button>
+
+          <button
             onClick={() => handleNavigate("/history")}
             className="w-full flex items-center px-6 py-3 text-left hover:bg-gray-100 transition-colors"
           >
