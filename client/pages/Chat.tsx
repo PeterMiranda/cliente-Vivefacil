@@ -2,7 +2,8 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
-import { Search, Menu, LogOut, ChevronLeft, Home, MessageSquare, FileText, Bell } from "lucide-react";
+import { Search, LogOut, ChevronLeft, Home, MessageSquare, FileText, Bell } from "lucide-react";
+import HamburgerMenu from "@/components/HamburgerMenu";
 
 interface ChatPreview {
   id: string;
