@@ -13,6 +13,7 @@ import Requests from "./pages/Requests";
 import RequestDetail from "./pages/RequestDetail";
 import Chat from "./pages/Chat";
 import ChatConversation from "./pages/ChatConversation";
+import History from "./pages/History";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
