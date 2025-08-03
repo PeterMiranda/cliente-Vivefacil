@@ -142,36 +142,40 @@ export default function Requests() {
             <div
               key={request.id}
               onClick={() => handleRequestClick(request.id)}
-              className="bg-yellow-400 rounded-3xl p-1 cursor-pointer hover:shadow-lg transition-shadow"
+              className="cursor-pointer hover:shadow-lg transition-shadow"
             >
-              <div className="bg-purple-700 rounded-3xl p-4 text-white">
-                <div className="flex justify-between items-start mb-4">
-                  <div className="space-y-1">
-                    <div className="font-abeezee text-sm tracking-wide">
-                      Solicitud
+              {/* Purple outer border */}
+              <div className="bg-gradient-to-r from-purple-600 to-purple-700 rounded-3xl p-4 shadow-md">
+                {/* Inner purple card */}
+                <div className="bg-purple-700 rounded-3xl p-4 text-white">
+                  <div className="flex justify-between items-start mb-4">
+                    <div className="space-y-1">
+                      <div className="font-abeezee text-sm tracking-wide leading-tight">
+                        {request.status}
+                      </div>
+                      <div className="font-abeezee text-sm tracking-wide leading-tight">
+                        {request.statusDetail}
+                      </div>
+                      <div className="font-abeezee text-sm tracking-wide leading-tight">
+                        {request.paymentMethod}
+                      </div>
                     </div>
-                    <div className="font-abeezee text-sm tracking-wide font-bold">
-                      {request.status}
-                    </div>
-                    <div className="font-abeezee text-sm tracking-wide">
-                      {request.paymentMethod}
+                    <div className="text-right space-y-1">
+                      <div className="font-abeezee text-sm leading-tight">
+                        {request.date}
+                      </div>
+                      <div className="font-abeezee text-sm leading-tight">
+                        {request.time}
+                      </div>
+                      <div className="font-abeezee text-sm leading-tight">
+                        {request.serviceName}
+                      </div>
                     </div>
                   </div>
-                  <div className="text-right space-y-1">
-                    <div className="font-abeezee text-sm">
-                      {request.date}
+                  <div className="border-t border-white pt-3">
+                    <div className="font-abeezee text-sm tracking-wide leading-tight">
+                      {request.description}
                     </div>
-                    <div className="font-abeezee text-sm">
-                      {request.time}
-                    </div>
-                    <div className="font-abeezee text-sm">
-                      {request.serviceName}
-                    </div>
-                  </div>
-                </div>
-                <div className="border-t border-white pt-3">
-                  <div className="font-abeezee text-sm tracking-wide">
-                    {request.description}
                   </div>
                 </div>
               </div>
