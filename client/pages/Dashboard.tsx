@@ -40,6 +40,10 @@ export default function Dashboard() {
     navigate("/chat");
   };
 
+  const handleServiceClick = (serviceName: string) => {
+    navigate(`/service-request/${encodeURIComponent(serviceName)}`);
+  };
+
   return (
     <div className="min-h-screen bg-white">
       {/* Header */}
