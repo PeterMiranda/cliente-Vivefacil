@@ -275,6 +275,109 @@ export default function History() {
             </div>
           </div>
         )}
+
+        {/* Rating Modal */}
+        {showRatingModal && (
+          <div className="fixed inset-0 bg-black bg-opacity-35 flex items-center justify-center p-3 z-50">
+            <div className="bg-white rounded-3xl w-full max-w-md max-h-[90vh] overflow-hidden">
+              {/* Modal Header */}
+              <div className="bg-purple-700 rounded-t-3xl px-6 py-4 relative">
+                <h2 className="text-white font-roboto text-xl font-bold">Proveedor</h2>
+                <Button
+                  variant="ghost"
+                  size="sm"
+                  onClick={handleCloseRatingModal}
+                  className="absolute top-4 right-4 text-white p-1 hover:bg-white hover:bg-opacity-20 rounded-full"
+                >
+                  <X className="h-6 w-6" />
+                </Button>
+              </div>
+
+              {/* Modal Content */}
+              <div className="p-6 space-y-6">
+                {/* Provider Avatar */}
+                <div className="flex justify-center">
+                  <div className="w-24 h-24 rounded-full overflow-hidden">
+                    <img
+                      src="https://cdn.builder.io/api/v1/image/assets%2Fd0b212635db542d0a69535984d9600d8%2F09404362ca694c2db6f113b47317a9f6?format=webp&width=800"
+                      alt="Provider avatar"
+                      className="w-full h-full object-cover"
+                    />
+                  </div>
+                </div>
+
+                {/* Provider Name */}
+                <div className="flex items-center justify-center space-x-2">
+                  <User className="h-5 w-5 text-purple-700" />
+                  <span className="font-roboto text-purple-700 font-medium text-lg">
+                    {selectedRequest?.providerName || "Dolores Maria Quintana M"}
+                  </span>
+                </div>
+
+                {/* Rating Section */}
+                <div className="space-y-4">
+                  <div className="flex items-center space-x-2">
+                    <div className="w-6 h-6 bg-purple-700 flex items-center justify-center">
+                      <span className="text-white text-lg">★</span>
+                    </div>
+                    <span className="font-roboto text-purple-700 font-medium text-lg">
+                      Califica el servicio
+                    </span>
+                  </div>
+
+                  {/* Star Rating */}
+                  <div className="flex justify-center space-x-2">
+                    {[1, 2, 3, 4, 5].map((star) => (
+                      <button
+                        key={star}
+                        onClick={() => handleStarClick(star)}
+                        className="transition-colors"
+                      >
+                        <span
+                          className={`text-4xl ${
+                            star <= rating ? 'text-orange-400' : 'text-gray-300'
+                          }`}
+                        >
+                          ★
+                        </span>
+                      </button>
+                    ))}
+                  </div>
+                </div>
+
+                {/* Comment Section */}
+                <div className="space-y-3">
+                  <div className="flex items-center space-x-2">
+                    <div className="w-6 h-6 bg-purple-700 rounded flex items-center justify-center">
+                      <span className="text-white text-sm">✎</span>
+                    </div>
+                    <span className="font-roboto text-purple-700 font-medium">
+                      Descripción *:
+                    </span>
+                  </div>
+
+                  <textarea
+                    value={ratingComment}
+                    onChange={(e) => setRatingComment(e.target.value)}
+                    placeholder="Escriba su comentario aquí"
+                    className="w-full h-24 bg-gray-100 border-none rounded-lg text-gray-700 placeholder:text-gray-400 font-abeezee resize-none p-3"
+                  />
+                </div>
+
+                {/* Submit Button */}
+                <div className="flex justify-center pt-4">
+                  <Button
+                    onClick={handleSubmitRating}
+                    disabled={rating === 0 || !ratingComment.trim()}
+                    className="bg-purple-700 hover:bg-purple-800 disabled:bg-gray-400 text-white font-abeezee text-lg px-12 py-3 rounded-full shadow-lg"
+                  >
+                    Enviar Calificación
+                  </Button>
+                </div>
+              </div>
+            </div>
+          </div>
+        )}
       </div>
     );
   }
