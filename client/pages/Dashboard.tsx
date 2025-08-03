@@ -35,6 +35,10 @@ export default function Dashboard() {
     navigate("/requests");
   };
 
+  const handleNavigateToChat = () => {
+    navigate("/chat");
+  };
+
   return (
     <div className="min-h-screen bg-white">
       {/* Header */}
