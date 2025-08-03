@@ -2,7 +2,8 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
-import { Search, Menu, LogOut, Home, MessageSquare, FileText, Bell, User } from "lucide-react";
+import { Search, LogOut, Home, MessageSquare, FileText, Bell, User } from "lucide-react";
+import HamburgerMenu from "@/components/HamburgerMenu";
 
 const serviceCategories = [
   { id: 1, name: "Albañil", icon: "🏗️" },
