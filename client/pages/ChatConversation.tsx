@@ -2,7 +2,8 @@ import { useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import { ChevronLeft, Menu, LogOut, Play, Camera, Mic } from "lucide-react";
+import { ChevronLeft, LogOut, Play, Camera, Mic } from "lucide-react";
+import HamburgerMenu from "@/components/HamburgerMenu";
 
 interface Message {
   id: string;
