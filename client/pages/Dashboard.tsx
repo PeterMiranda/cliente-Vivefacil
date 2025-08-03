@@ -120,7 +120,7 @@ export default function Dashboard() {
             <span className="text-xs text-gray-600 font-roboto">Inicio</span>
           </button>
           
-          <button className="flex flex-col items-center space-y-1 py-2">
+          <button onClick={handleNavigateToChat} className="flex flex-col items-center space-y-1 py-2">
             <MessageSquare className="h-6 w-6 text-gray-600" />
             <span className="text-xs text-gray-600 font-roboto">Chat</span>
           </button>
