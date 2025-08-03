@@ -345,7 +345,7 @@ export default function ServiceRequest() {
 
       {/* Provider Selection Modal */}
       {showProviderModal && (
-        <div className="fixed inset-0 bg-black bg-opacity-35 flex items-center justify-center p-4 z-50">
+        <div className="fixed inset-0 bg-black bg-opacity-35 flex items-center justify-center p-3 z-50">
           <div className="bg-white rounded-3xl w-full max-w-md max-h-[90vh] overflow-hidden">
             {/* Modal Header */}
             <div className="bg-purple-700 rounded-t-3xl px-6 py-4 relative">
@@ -353,7 +353,7 @@ export default function ServiceRequest() {
                 variant="ghost"
                 size="sm"
                 onClick={handleProviderModalCancel}
-                className="absolute top-4 right-4 text-white p-1 hover:bg-white hover:bg-opacity-20"
+                className="absolute top-4 right-4 text-white p-1 hover:bg-white hover:bg-opacity-20 rounded-full"
               >
                 <X className="h-6 w-6" />
               </Button>
@@ -362,24 +362,26 @@ export default function ServiceRequest() {
             {/* Modal Content */}
             <div className="p-6 space-y-4 max-h-[70vh] overflow-y-auto">
               {/* Search Bar */}
-              <div className="relative">
-                <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 h-5 w-5 text-purple-700" />
-                <Input
-                  type="text"
-                  placeholder="Buscar proveedor"
-                  value={providerSearchQuery}
-                  onChange={(e) => setProviderSearchQuery(e.target.value)}
-                  className="w-full pl-10 pr-4 py-3 bg-yellow-400 border-none rounded-lg text-purple-700 placeholder:text-purple-700 font-abeezee"
-                />
-                <label className="absolute right-3 top-1/2 transform -translate-y-1/2 flex items-center space-x-2">
-                  <input type="radio" name="showAll" className="text-gray-400" />
-                  <span className="font-abeezee text-black text-sm">Todos</span>
-                </label>
+              <div className="relative bg-yellow-400 rounded-lg p-2">
+                <div className="flex items-center">
+                  <Search className="h-5 w-5 text-purple-700 mr-3" />
+                  <input
+                    type="text"
+                    placeholder="Buscar proveedor"
+                    value={providerSearchQuery}
+                    onChange={(e) => setProviderSearchQuery(e.target.value)}
+                    className="flex-1 bg-transparent border-none outline-none text-purple-700 placeholder:text-purple-700 font-abeezee text-sm"
+                  />
+                  <label className="flex items-center space-x-2 ml-4">
+                    <input type="radio" name="showAll" className="w-4 h-4" />
+                    <span className="font-abeezee text-black text-sm">Todos</span>
+                  </label>
+                </div>
               </div>
 
               {/* Provider Type Filter */}
-              <div className="flex justify-between items-center bg-gray-100 rounded-lg p-3">
-                <span className="font-abeezee text-black text-sm">Tipo de Provedor</span>
+              <div className="flex justify-between items-center bg-gray-100 rounded-lg p-3 border-b border-gray-300">
+                <span className="font-abeezee text-black text-sm">Tipo de Proveedor</span>
                 <button
                   onClick={() => setShowProviderTypeModal(true)}
                   className="font-abeezee text-black text-sm"
@@ -398,7 +400,11 @@ export default function ServiceRequest() {
                   >
                     <div className="flex items-center space-x-3">
                       <div className="w-10 h-10 bg-yellow-400 rounded-full flex items-center justify-center">
-                        <User className="h-6 w-6 text-purple-700" />
+                        <img
+                          src="https://api.builder.io/api/v1/image/assets/TEMP/6a72d392edb22d11a7512353385fd0131d9addaa?width=62"
+                          alt="Profile"
+                          className="w-8 h-8 rounded-full"
+                        />
                       </div>
 
                       <div className="flex-1">
@@ -408,24 +414,28 @@ export default function ServiceRequest() {
                             setShowProviderModal(false);
                             navigate(`/provider/${provider.id}`);
                           }}
-                          className="font-abeezee text-sm font-medium hover:underline text-left"
+                          className="font-abeezee text-sm font-medium hover:underline text-left block"
                         >
                           {provider.name} - {provider.type}
                         </button>
-                        <div className="flex items-center space-x-1 mt-1">
-                          {[...Array(provider.rating)].map((_, i) => (
-                            <Star key={i} className="h-3 w-3 text-white" />
+                        <div className="flex items-center mt-1">
+                          {[...Array(5)].map((_, i) => (
+                            <svg key={i} className="w-4 h-4 text-white mr-1" viewBox="0 0 14 16" fill="none">
+                              <path d="M7.00008 1.33301L8.80258 5.50634L12.8334 6.17967L9.91675 9.42634L10.6051 14.013L7.00008 11.8463L3.39508 14.013L4.08341 9.42634L1.16675 6.17967L5.19758 5.50634L7.00008 1.33301Z" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                            </svg>
                           ))}
                         </div>
                         <p className="font-abeezee text-xs mt-1">
                           <span className="font-bold">Ciudad:</span> {provider.city}
                         </p>
                       </div>
-                      
-                      <div className="w-6 h-6 border-2 border-gray-400 rounded-full flex items-center justify-center">
-                        {selectedProviders.find(p => p.id === provider.id) && (
-                          <div className="w-3 h-3 bg-yellow-400 rounded-full"></div>
-                        )}
+
+                      <div className="w-10 h-10 bg-yellow-400 rounded-full flex items-center justify-center">
+                        <div className={`w-5 h-5 rounded-full border-2 ${selectedProviders.find(p => p.id === provider.id) ? 'bg-white border-gray-400' : 'border-gray-400'} flex items-center justify-center`}>
+                          {selectedProviders.find(p => p.id === provider.id) && (
+                            <div className="w-2 h-2 bg-yellow-400 rounded-full"></div>
+                          )}
+                        </div>
                       </div>
                     </div>
                   </div>
@@ -437,13 +447,13 @@ export default function ServiceRequest() {
             <div className="flex space-x-4 p-6">
               <Button
                 onClick={handleProviderModalAccept}
-                className="flex-1 bg-green-500 hover:bg-green-600 text-white font-abeezee py-3 rounded-xl"
+                className="flex-1 bg-green-500 hover:bg-green-600 text-white font-abeezee py-3 rounded-xl shadow-lg"
               >
                 Aceptar
               </Button>
               <Button
                 onClick={handleProviderModalCancel}
-                className="flex-1 bg-red-500 hover:bg-red-600 text-white font-abeezee py-3 rounded-xl"
+                className="flex-1 bg-red-500 hover:bg-red-600 text-white font-abeezee py-3 rounded-xl shadow-lg"
               >
                 Cancelar
               </Button>
