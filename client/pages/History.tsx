@@ -65,6 +65,24 @@ export default function History() {
     setShowRatingModal(true);
   };
 
+  const handleCloseRatingModal = () => {
+    setShowRatingModal(false);
+    setRating(0);
+    setRatingComment("");
+  };
+
+  const handleSubmitRating = () => {
+    // In a real app, this would submit the rating to the backend
+    console.log("Rating submitted:", { rating, comment: ratingComment });
+    setShowRatingModal(false);
+    setRating(0);
+    setRatingComment("");
+  };
+
+  const handleStarClick = (starRating: number) => {
+    setRating(starRating);
+  };
+
   const handleCloseModal = () => {
     setShowConfirmModal(false);
   };
