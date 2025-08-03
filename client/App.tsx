@@ -31,6 +31,7 @@ const App = () => (
           <Route path="/request/:requestId" element={<RequestDetail />} />
           <Route path="/chat" element={<Chat />} />
           <Route path="/chat/:chatId" element={<ChatConversation />} />
+          <Route path="/history" element={<History />} />
           <Route path="/demo" element={<Index />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
