@@ -64,61 +64,91 @@ export default function RequestDetail() {
           <h2 className="font-roboto text-2xl font-bold text-black mb-4">
             Estado de solicitud
           </h2>
-          <div className="bg-gray-200 rounded-lg h-16 flex items-center justify-center">
-            <span className="text-gray-500 font-abeezee">Estado del servicio</span>
+          <div className="bg-gray-200 rounded-lg p-4 flex items-center space-x-3">
+            <AlertCircle className="h-9 w-9 text-black flex-shrink-0" />
+            <div className="flex-1">
+              <p className="font-abeezee text-purple-700 text-sm leading-tight">
+                La solicitud se encuentra en estado asignada. Puede confirma que el servicio se ha realizado efectivamente con el siguiente botón
+              </p>
+            </div>
           </div>
-        </div>
 
-        {/* Service Location Card */}
-        <div className="bg-white rounded-lg shadow-lg p-6">
-          <h2 className="font-roboto text-2xl font-bold text-black mb-4">
-            Ubicacion del servio
-          </h2>
-          <div className="bg-gray-100 rounded-lg overflow-hidden">
-            {/* Mock Map - In a real app, this would be an actual map component */}
-            <div className="h-80 bg-gradient-to-br from-blue-100 to-green-100 flex items-center justify-center relative">
-              {/* Mock map elements */}
-              <div className="absolute inset-0 bg-gray-200 opacity-50"></div>
-              <div className="relative z-10 bg-white rounded-lg p-4 shadow-lg">
-                <div className="text-sm text-gray-600 mb-2">📍 Ubicación del servicio</div>
-                <div className="text-xs text-gray-500">
-                  Graphicsource C.A. Guayaquil, C. 18-A N...
+          {/* Provider Section */}
+          <div className="mt-6">
+            <h3 className="font-roboto text-purple-700 text-lg font-bold mb-4">
+              Proveedor asignado:
+            </h3>
+            <button
+              onClick={handleProviderClick}
+              className="w-full bg-purple-700 rounded-lg p-4 text-white hover:bg-purple-800 transition-colors"
+            >
+              <div className="flex items-center space-x-3">
+                <div className="w-10 h-10 bg-yellow-400 rounded-full flex items-center justify-center">
+                  <img
+                    src="https://api.builder.io/api/v1/image/assets/TEMP/6a72d392edb22d11a7512353385fd0131d9addaa?width=62"
+                    alt="Profile"
+                    className="w-8 h-8 rounded-full"
+                  />
                 </div>
-                <div className="text-xs text-blue-600 mt-1">Más opciones</div>
+
+                <div className="flex-1 text-left">
+                  <div className="font-abeezee text-sm font-medium">Sebastian Ceballos</div>
+                  <div className="flex items-center mt-1">
+                    {[...Array(5)].map((_, i) => (
+                      <svg key={i} className="w-4 h-4 text-white mr-1" viewBox="0 0 14 16" fill="none">
+                        <path d="M7.00008 1.33301L8.80258 5.50634L12.8334 6.17967L9.91675 9.42634L10.6051 14.013L7.00008 11.8463L3.39508 14.013L4.08341 9.42634L1.16675 6.17967L5.19758 5.50634L7.00008 1.33301Z" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                      </svg>
+                    ))}
+                  </div>
+                  <p className="font-abeezee text-xs mt-1">
+                    <span className="font-bold">Ciudad:</span> Guayaquil
+                  </p>
+                </div>
               </div>
-              
-              {/* Mock route indicator */}
-              <div className="absolute bottom-4 left-4 bg-white rounded-lg p-2 shadow-lg">
-                <div className="text-xs text-gray-600">🚗 9 min</div>
-                <div className="text-xs text-gray-500">5.6 km</div>
-              </div>
-              
-              {/* Zoom controls */}
-              <div className="absolute bottom-4 right-4 flex flex-col space-y-2">
-                <button className="bg-white rounded w-8 h-8 flex items-center justify-center shadow-lg text-lg">
-                  +
-                </button>
-                <button className="bg-white rounded w-8 h-8 flex items-center justify-center shadow-lg text-lg">
-                  −
-                </button>
-              </div>
-            </div>
-            
-            {/* Map attribution */}
-            <div className="bg-white px-2 py-1 text-xs text-gray-500 flex justify-between">
-              <span>Combinaciones de teclas</span>
-              <span>Datos del mapa ©2023</span>
-              <span>Términos</span>
-              <span>Notificar un problema de Mapa</span>
-            </div>
+            </button>
           </div>
         </div>
 
         {/* Request Details Card */}
-        <div className="bg-white rounded-lg shadow-lg p-6">
+        <div className="bg-white rounded-lg shadow-lg p-6 space-y-6">
           <h2 className="font-roboto text-2xl font-bold text-black">
             Detalles de la solicitud
           </h2>
+
+          {/* Location */}
+          <div className="space-y-3">
+            <div className="flex items-center space-x-2">
+              <MapPin className="h-5 w-5 text-purple-700" />
+              <span className="font-roboto text-purple-700 font-medium">Ubicación:</span>
+            </div>
+            <Button className="w-full bg-purple-700 hover:bg-purple-800 text-white font-abeezee text-lg py-3 rounded-lg">
+              Ver en el mapa
+            </Button>
+          </div>
+
+          {/* Description */}
+          <div className="space-y-3">
+            <div className="flex items-center space-x-2">
+              <Edit className="h-5 w-5 text-purple-700" />
+              <span className="font-roboto text-purple-700 font-medium">Descripción:</span>
+            </div>
+            <p className="font-abeezee text-gray-700">ayuda con proyecto</p>
+          </div>
+
+          {/* Reference Photo */}
+          <div className="space-y-3">
+            <div className="flex items-center space-x-2">
+              <Image className="h-5 w-5 text-purple-700" />
+              <span className="font-roboto text-purple-700 font-medium">Foto de referencia:</span>
+            </div>
+            <div className="rounded-lg overflow-hidden">
+              <img
+                src="https://api.builder.io/api/v1/image/assets/TEMP/22fb27bd51daa7a49f2b6de2cc9a820d6d675f86?width=654"
+                alt="Reference"
+                className="w-full h-80 object-cover"
+              />
+            </div>
+          </div>
         </div>
       </div>
     </div>
