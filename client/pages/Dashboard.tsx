@@ -27,6 +27,21 @@ const serviceCategories = [
 
 export default function Dashboard() {
   const [searchQuery, setSearchQuery] = useState("");
+  const [showOptionsModal, setShowOptionsModal] = useState(false);
+  const [showCancelModal, setShowCancelModal] = useState(false);
+  const [showProviderModal, setShowProviderModal] = useState(false);
+  const [cancelReason, setCancelReason] = useState("");
+  const [activeRequest, setActiveRequest] = useState({
+    id: "1",
+    providerName: "Sebastian Ceballos",
+    status: "Solicitud Asignada",
+    statusDetail: "Standby",
+    paymentMethod: "Efectivo",
+    date: "2025-06-27",
+    time: "14:30",
+    serviceName: "Servicio de Ejemplo",
+    description: "Descripción de ejemplo del servicio"
+  });
   const navigate = useNavigate();
 
   const handleLogout = () => {
