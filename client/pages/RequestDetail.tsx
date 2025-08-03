@@ -1,6 +1,6 @@
 import { useNavigate, useParams } from "react-router-dom";
 import { Button } from "@/components/ui/button";
-import { ChevronLeft, LogOut } from "lucide-react";
+import { ChevronLeft, LogOut, MapPin, Edit, Image, AlertCircle } from "lucide-react";
 import HamburgerMenu from "@/components/HamburgerMenu";
 
 export default function RequestDetail() {
@@ -13,6 +13,10 @@ export default function RequestDetail() {
 
   const handleLogout = () => {
     navigate("/");
+  };
+
+  const handleProviderClick = () => {
+    navigate('/provider/1');
   };
 
   return (
