@@ -60,6 +60,37 @@ export default function Dashboard() {
     navigate(`/service-request/${encodeURIComponent(serviceName)}`);
   };
 
+  const handleOptionsClick = () => {
+    setShowOptionsModal(true);
+  };
+
+  const handleChangeProvider = () => {
+    setShowOptionsModal(false);
+    setShowProviderModal(true);
+  };
+
+  const handleCancelRequest = () => {
+    setShowOptionsModal(false);
+    setShowCancelModal(true);
+  };
+
+  const handleConfirmCancel = () => {
+    // In real app, cancel the request
+    console.log("Canceling request with reason:", cancelReason);
+    setShowCancelModal(false);
+    setCancelReason("");
+    // Remove active request or update status
+  };
+
+  const handleProviderChange = (newProviderName: string) => {
+    setActiveRequest(prev => ({
+      ...prev,
+      providerName: newProviderName,
+      time: "15:30" // Update time as shown in Figma
+    }));
+    setShowProviderModal(false);
+  };
+
   return (
     <div className="min-h-screen bg-white">
       {/* Header */}
