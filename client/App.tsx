@@ -11,6 +11,8 @@ import Login from "./pages/Login";
 import Dashboard from "./pages/Dashboard";
 import Requests from "./pages/Requests";
 import RequestDetail from "./pages/RequestDetail";
+import Chat from "./pages/Chat";
+import ChatConversation from "./pages/ChatConversation";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
