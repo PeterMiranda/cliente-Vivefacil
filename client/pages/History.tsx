@@ -251,9 +251,12 @@ export default function History() {
 
                 {/* Provider Name */}
                 <div className="bg-gray-200 rounded-lg p-4 text-center">
-                  <span className="font-roboto text-purple-700 font-medium text-lg">
+                  <button
+                    onClick={() => navigate('/provider/1')}
+                    className="font-roboto text-purple-700 font-medium text-lg hover:underline"
+                  >
                     {selectedRequest.providerName}
-                  </span>
+                  </button>
                 </div>
 
                 {/* Confirmation Text */}
