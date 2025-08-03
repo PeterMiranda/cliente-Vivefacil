@@ -1,7 +1,8 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { Button } from "@/components/ui/button";
-import { ChevronLeft, Menu, LogOut, ChevronDown, AlertCircle, MapPin, Edit, Image, X } from "lucide-react";
+import { Textarea } from "@/components/ui/textarea";
+import { ChevronLeft, Menu, LogOut, ChevronDown, AlertCircle, MapPin, Edit, Image, X, User } from "lucide-react";
 
 interface HistoryRequest {
   id: string;
