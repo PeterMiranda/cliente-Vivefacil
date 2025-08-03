@@ -3,7 +3,17 @@ import { useNavigate } from "react-router-dom";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { Textarea } from "@/components/ui/textarea";
-import { Search, LogOut, Home, MessageSquare, FileText, Bell, User, Menu as MenuIcon, X } from "lucide-react";
+import {
+  Search,
+  LogOut,
+  Home,
+  MessageSquare,
+  FileText,
+  Bell,
+  User,
+  Menu as MenuIcon,
+  X,
+} from "lucide-react";
 import HamburgerMenu from "@/components/HamburgerMenu";
 
 const serviceCategories = [
@@ -40,7 +50,7 @@ export default function Dashboard() {
     date: "2025-06-27",
     time: "14:30",
     serviceName: "Servicio de Ejemplo",
-    description: "Descripción de ejemplo del servicio"
+    description: "Descripción de ejemplo del servicio",
   });
   const navigate = useNavigate();
 
@@ -83,10 +93,10 @@ export default function Dashboard() {
   };
 
   const handleProviderChange = (newProviderName: string) => {
-    setActiveRequest(prev => ({
+    setActiveRequest((prev) => ({
       ...prev,
       providerName: newProviderName,
-      time: "15:30" // Update time as shown in Figma
+      time: "15:30", // Update time as shown in Figma
     }));
     setShowProviderModal(false);
   };
@@ -97,7 +107,7 @@ export default function Dashboard() {
       <div className="bg-purple-700 text-white px-4 py-2">
         <div className="flex items-center justify-between">
           <HamburgerMenu />
-          
+
           <div className="flex-1 flex justify-center">
             <div className="bg-purple-700 rounded-full px-8 py-2">
               <h1 className="font-knewave text-2xl text-yellow-400">
@@ -106,7 +116,12 @@ export default function Dashboard() {
             </div>
           </div>
 
-          <Button variant="ghost" size="sm" className="text-white p-2" onClick={handleLogout}>
+          <Button
+            variant="ghost"
+            size="sm"
+            className="text-white p-2"
+            onClick={handleLogout}
+          >
             <LogOut className="h-6 w-6" />
           </Button>
         </div>
@@ -198,10 +213,7 @@ export default function Dashboard() {
                     {activeRequest.serviceName}
                   </div>
                 </div>
-                <button
-                  onClick={handleOptionsClick}
-                  className="p-2"
-                >
+                <button onClick={handleOptionsClick} className="p-2">
                   <img
                     src="https://api.builder.io/api/v1/image/assets/TEMP/27d1b7be3c0de58cce7d129ffeac7600379636a2?width=94"
                     alt="Options"
@@ -230,7 +242,10 @@ export default function Dashboard() {
             <span className="text-xs text-gray-600 font-roboto">Inicio</span>
           </button>
 
-          <button onClick={handleNavigateToChat} className="flex flex-col items-center space-y-1 py-2">
+          <button
+            onClick={handleNavigateToChat}
+            className="flex flex-col items-center space-y-1 py-2"
+          >
             <MessageSquare className="h-6 w-6 text-gray-600" />
             <span className="text-xs text-gray-600 font-roboto">Chat</span>
           </button>
@@ -240,12 +255,16 @@ export default function Dashboard() {
             className="flex flex-col items-center space-y-1 py-2"
           >
             <FileText className="h-6 w-6 text-gray-600" />
-            <span className="text-xs text-gray-600 font-roboto">Solicitudes</span>
+            <span className="text-xs text-gray-600 font-roboto">
+              Solicitudes
+            </span>
           </button>
 
           <button className="flex flex-col items-center space-y-1 py-2">
             <Bell className="h-6 w-6 text-gray-600" />
-            <span className="text-xs text-gray-600 font-roboto">Notificaciones</span>
+            <span className="text-xs text-gray-600 font-roboto">
+              Notificaciones
+            </span>
           </button>
         </div>
       </div>
@@ -349,7 +368,9 @@ export default function Dashboard() {
         <div className="fixed inset-0 bg-black bg-opacity-35 flex items-center justify-center p-4 z-50">
           <div className="bg-white rounded-3xl w-full max-w-md max-h-[80vh] overflow-hidden">
             <div className="bg-purple-700 rounded-t-3xl px-6 py-4 relative">
-              <h2 className="text-white font-roboto text-xl font-bold">Cambiar Proveedor</h2>
+              <h2 className="text-white font-roboto text-xl font-bold">
+                Cambiar Proveedor
+              </h2>
               <button
                 onClick={() => setShowProviderModal(false)}
                 className="absolute top-4 right-4 text-white p-1 hover:bg-white hover:bg-opacity-20 rounded-full"
@@ -369,10 +390,14 @@ export default function Dashboard() {
                       <User className="h-6 w-6 text-purple-700" />
                     </div>
                     <div className="flex-1 text-left">
-                      <div className="font-abeezee text-sm font-medium">Roberto Barrios</div>
+                      <div className="font-abeezee text-sm font-medium">
+                        Roberto Barrios
+                      </div>
                       <div className="flex items-center mt-1">
                         {[...Array(5)].map((_, i) => (
-                          <span key={i} className="text-white text-sm mr-1">★</span>
+                          <span key={i} className="text-white text-sm mr-1">
+                            ★
+                          </span>
                         ))}
                       </div>
                       <p className="font-abeezee text-xs mt-1">
@@ -391,10 +416,14 @@ export default function Dashboard() {
                       <User className="h-6 w-6 text-purple-700" />
                     </div>
                     <div className="flex-1 text-left">
-                      <div className="font-abeezee text-sm font-medium">Maria Rodriguez</div>
+                      <div className="font-abeezee text-sm font-medium">
+                        Maria Rodriguez
+                      </div>
                       <div className="flex items-center mt-1">
                         {[...Array(5)].map((_, i) => (
-                          <span key={i} className="text-white text-sm mr-1">★</span>
+                          <span key={i} className="text-white text-sm mr-1">
+                            ★
+                          </span>
                         ))}
                       </div>
                       <p className="font-abeezee text-xs mt-1">

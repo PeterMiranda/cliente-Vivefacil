@@ -31,8 +31,12 @@ const mockRequests: RequestItem[] = [
 ];
 
 export default function Requests() {
-  const [activeTab, setActiveTab] = useState<"PAGADAS" | "NO PAGADAS">("NO PAGADAS");
-  const [sortOrder, setSortOrder] = useState<"Ascendente" | "Descendente">("Descendente");
+  const [activeTab, setActiveTab] = useState<"PAGADAS" | "NO PAGADAS">(
+    "NO PAGADAS",
+  );
+  const [sortOrder, setSortOrder] = useState<"Ascendente" | "Descendente">(
+    "Descendente",
+  );
   const navigate = useNavigate();
 
   const handleBack = () => {
@@ -47,8 +51,8 @@ export default function Requests() {
     navigate(`/request/${requestId}`);
   };
 
-  const filteredRequests = mockRequests.filter(request => 
-    activeTab === "PAGADAS" ? request.isPaid : !request.isPaid
+  const filteredRequests = mockRequests.filter((request) =>
+    activeTab === "PAGADAS" ? request.isPaid : !request.isPaid,
   );
 
   return (
@@ -57,7 +61,7 @@ export default function Requests() {
       <div className="bg-purple-700 text-white px-4 py-2">
         <div className="flex items-center justify-between">
           <HamburgerMenu />
-          
+
           <div className="flex-1 flex justify-center">
             <div className="bg-purple-700 rounded-full px-8 py-2">
               <h1 className="font-knewave text-2xl text-yellow-400">
@@ -66,7 +70,12 @@ export default function Requests() {
             </div>
           </div>
 
-          <Button variant="ghost" size="sm" className="text-white p-2" onClick={handleLogout}>
+          <Button
+            variant="ghost"
+            size="sm"
+            className="text-white p-2"
+            onClick={handleLogout}
+          >
             <LogOut className="h-6 w-6" />
           </Button>
         </div>
@@ -121,7 +130,11 @@ export default function Requests() {
           Orden
         </div>
         <button
-          onClick={() => setSortOrder(sortOrder === "Ascendente" ? "Descendente" : "Ascendente")}
+          onClick={() =>
+            setSortOrder(
+              sortOrder === "Ascendente" ? "Descendente" : "Ascendente",
+            )
+          }
           className="flex items-center space-x-2 font-abeezee text-black text-sm tracking-wide"
         >
           <span>{sortOrder}</span>

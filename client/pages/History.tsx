@@ -2,7 +2,18 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Textarea } from "@/components/ui/textarea";
-import { ChevronLeft, Menu, LogOut, ChevronDown, AlertCircle, MapPin, Edit, Image, X, User } from "lucide-react";
+import {
+  ChevronLeft,
+  Menu,
+  LogOut,
+  ChevronDown,
+  AlertCircle,
+  MapPin,
+  Edit,
+  Image,
+  X,
+  User,
+} from "lucide-react";
 
 interface HistoryRequest {
   id: string;
@@ -27,15 +38,22 @@ const mockHistoryRequests: HistoryRequest[] = [
     serviceName: "Servicio de Ejemplo",
     description: "Descripción de ejemplo del servicio",
     location: "Oficina de Admisiones ESPOL",
-    referencePhoto: "https://cdn.builder.io/api/v1/image/assets%2Fd0b212635db542d0a69535984d9600d8%2Fefe99d28c7c6468ba168e7d979694096?format=webp&width=800",
-    providerName: "Sebastian C"
+    referencePhoto:
+      "https://cdn.builder.io/api/v1/image/assets%2Fd0b212635db542d0a69535984d9600d8%2Fefe99d28c7c6468ba168e7d979694096?format=webp&width=800",
+    providerName: "Sebastian C",
   },
 ];
 
 export default function History() {
-  const [activeTab, setActiveTab] = useState<"EN ESPERA" | "PASADAS">("PASADAS");
-  const [sortOrder, setSortOrder] = useState<"Ascendente" | "Descendente">("Descendente");
-  const [selectedRequest, setSelectedRequest] = useState<HistoryRequest | null>(null);
+  const [activeTab, setActiveTab] = useState<"EN ESPERA" | "PASADAS">(
+    "PASADAS",
+  );
+  const [sortOrder, setSortOrder] = useState<"Ascendente" | "Descendente">(
+    "Descendente",
+  );
+  const [selectedRequest, setSelectedRequest] = useState<HistoryRequest | null>(
+    null,
+  );
   const [showConfirmModal, setShowConfirmModal] = useState(false);
   const [showRatingModal, setShowRatingModal] = useState(false);
   const [rating, setRating] = useState(0);
@@ -94,7 +112,7 @@ export default function History() {
     // In a real app, this would update the request status
   };
 
-  const filteredRequests = mockHistoryRequests.filter(request => {
+  const filteredRequests = mockHistoryRequests.filter((request) => {
     if (activeTab === "EN ESPERA") {
       return request.status === "EN ESPERA";
     } else {
@@ -111,7 +129,7 @@ export default function History() {
             <Button variant="ghost" size="sm" className="text-white p-2">
               <Menu className="h-6 w-6" />
             </Button>
-            
+
             <div className="flex-1 flex justify-center">
               <div className="bg-purple-700 rounded-full px-8 py-2">
                 <h1 className="font-knewave text-2xl text-yellow-400">
@@ -120,7 +138,12 @@ export default function History() {
               </div>
             </div>
 
-            <Button variant="ghost" size="sm" className="text-white p-2" onClick={handleLogout}>
+            <Button
+              variant="ghost"
+              size="sm"
+              className="text-white p-2"
+              onClick={handleLogout}
+            >
               <LogOut className="h-6 w-6" />
             </Button>
           </div>
@@ -154,8 +177,9 @@ export default function History() {
               <AlertCircle className="h-9 w-9 text-black" />
               <div className="flex-1">
                 <p className="font-abeezee text-purple-700 text-sm leading-tight">
-                  La solicitud se encuentra en estado finalizada. Puede confirma que el 
-                  servicio se ha realizado efectivamente con el siguiente botón
+                  La solicitud se encuentra en estado finalizada. Puede confirma
+                  que el servicio se ha realizado efectivamente con el siguiente
+                  botón
                 </p>
               </div>
             </div>
@@ -185,7 +209,9 @@ export default function History() {
             <div className="space-y-3">
               <div className="flex items-center space-x-2">
                 <MapPin className="h-5 w-5 text-purple-700" />
-                <span className="font-roboto text-purple-700 font-medium">Ubicación:</span>
+                <span className="font-roboto text-purple-700 font-medium">
+                  Ubicación:
+                </span>
               </div>
               <Button className="w-full bg-purple-700 hover:bg-purple-800 text-white font-abeezee text-lg py-3 rounded-lg">
                 Ver en el mapa
@@ -196,22 +222,28 @@ export default function History() {
             <div className="space-y-3">
               <div className="flex items-center space-x-2">
                 <Edit className="h-5 w-5 text-purple-700" />
-                <span className="font-roboto text-purple-700 font-medium">Descripción:</span>
+                <span className="font-roboto text-purple-700 font-medium">
+                  Descripción:
+                </span>
               </div>
-              <p className="font-abeezee text-gray-700">{selectedRequest.description}</p>
+              <p className="font-abeezee text-gray-700">
+                {selectedRequest.description}
+              </p>
             </div>
 
             {/* Reference Photo */}
             <div className="space-y-3">
               <div className="flex items-center space-x-2">
                 <Image className="h-5 w-5 text-purple-700" />
-                <span className="font-roboto text-purple-700 font-medium">Foto de referencia:</span>
+                <span className="font-roboto text-purple-700 font-medium">
+                  Foto de referencia:
+                </span>
               </div>
               {selectedRequest.referencePhoto && (
                 <div className="rounded-lg overflow-hidden">
-                  <img 
-                    src={selectedRequest.referencePhoto} 
-                    alt="Reference" 
+                  <img
+                    src={selectedRequest.referencePhoto}
+                    alt="Reference"
                     className="w-full h-80 object-cover"
                   />
                 </div>
@@ -252,7 +284,7 @@ export default function History() {
                 {/* Provider Name */}
                 <div className="bg-gray-200 rounded-lg p-4 text-center">
                   <button
-                    onClick={() => navigate('/provider/1')}
+                    onClick={() => navigate("/provider/1")}
                     className="font-roboto text-purple-700 font-medium text-lg hover:underline"
                   >
                     {selectedRequest.providerName}
@@ -262,7 +294,8 @@ export default function History() {
                 {/* Confirmation Text */}
                 <div className="bg-gray-200 rounded-lg p-4">
                   <p className="font-roboto text-purple-700 text-center leading-tight">
-                    ¿Está seguro de que desea confirmar que se ha realizado efectivamente el servicio?
+                    ¿Está seguro de que desea confirmar que se ha realizado
+                    efectivamente el servicio?
                   </p>
                 </div>
 
@@ -286,7 +319,9 @@ export default function History() {
             <div className="bg-white rounded-3xl w-full max-w-md max-h-[90vh] overflow-hidden">
               {/* Modal Header */}
               <div className="bg-purple-700 rounded-t-3xl px-6 py-4 relative">
-                <h2 className="text-white font-roboto text-xl font-bold">Proveedor</h2>
+                <h2 className="text-white font-roboto text-xl font-bold">
+                  Proveedor
+                </h2>
                 <Button
                   variant="ghost"
                   size="sm"
@@ -316,11 +351,12 @@ export default function History() {
                   <button
                     onClick={() => {
                       setShowRatingModal(false);
-                      navigate('/provider/1');
+                      navigate("/provider/1");
                     }}
                     className="font-roboto text-purple-700 font-medium text-lg hover:underline"
                   >
-                    {selectedRequest?.providerName || "Dolores Maria Quintana M"}
+                    {selectedRequest?.providerName ||
+                      "Dolores Maria Quintana M"}
                   </button>
                 </div>
 
@@ -345,7 +381,7 @@ export default function History() {
                       >
                         <span
                           className={`text-4xl ${
-                            star <= rating ? 'text-orange-400' : 'text-gray-300'
+                            star <= rating ? "text-orange-400" : "text-gray-300"
                           }`}
                         >
                           ★
@@ -400,7 +436,7 @@ export default function History() {
           <Button variant="ghost" size="sm" className="text-white p-2">
             <Menu className="h-6 w-6" />
           </Button>
-          
+
           <div className="flex-1 flex justify-center">
             <div className="bg-purple-700 rounded-full px-8 py-2">
               <h1 className="font-knewave text-2xl text-yellow-400">
@@ -409,7 +445,12 @@ export default function History() {
             </div>
           </div>
 
-          <Button variant="ghost" size="sm" className="text-white p-2" onClick={handleLogout}>
+          <Button
+            variant="ghost"
+            size="sm"
+            className="text-white p-2"
+            onClick={handleLogout}
+          >
             <LogOut className="h-6 w-6" />
           </Button>
         </div>
@@ -464,7 +505,11 @@ export default function History() {
           Orden
         </div>
         <button
-          onClick={() => setSortOrder(sortOrder === "Ascendente" ? "Descendente" : "Ascendente")}
+          onClick={() =>
+            setSortOrder(
+              sortOrder === "Ascendente" ? "Descendente" : "Ascendente",
+            )
+          }
           className="flex items-center space-x-2 font-abeezee text-black text-sm tracking-wide"
         >
           <span>{sortOrder}</span>
@@ -501,12 +546,8 @@ export default function History() {
                     </div>
                   </div>
                   <div className="text-right space-y-1">
-                    <div className="font-abeezee text-sm">
-                      {request.date}
-                    </div>
-                    <div className="font-abeezee text-sm">
-                      {request.time}
-                    </div>
+                    <div className="font-abeezee text-sm">{request.date}</div>
+                    <div className="font-abeezee text-sm">{request.time}</div>
                     <div className="font-abeezee text-sm">
                       {request.serviceName}
                     </div>

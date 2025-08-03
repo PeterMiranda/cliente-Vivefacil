@@ -3,7 +3,18 @@ import { useNavigate, useParams } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
-import { ChevronLeft, LogOut, Upload, Users, Calendar, CreditCard, Search, Star, X, User } from "lucide-react";
+import {
+  ChevronLeft,
+  LogOut,
+  Upload,
+  Users,
+  Calendar,
+  CreditCard,
+  Search,
+  Star,
+  X,
+  User,
+} from "lucide-react";
 import HamburgerMenu from "@/components/HamburgerMenu";
 
 interface Provider {
@@ -20,18 +31,18 @@ const mockProviders: Provider[] = [
   {
     id: "1",
     name: "Detodo S.A.",
-    type: "Empresa", 
+    type: "Empresa",
     city: "Guayaquil",
     rating: 5,
-    avatar: "/placeholder-avatar.png"
+    avatar: "/placeholder-avatar.png",
   },
   {
     id: "2",
     name: "TrabajosVariados SA",
     type: "Empresa",
-    city: "Guayaquil", 
+    city: "Guayaquil",
     rating: 5,
-    avatar: "/placeholder-avatar.png"
+    avatar: "/placeholder-avatar.png",
   },
   {
     id: "3",
@@ -39,7 +50,7 @@ const mockProviders: Provider[] = [
     type: "Independiente",
     city: "Guayaquil",
     rating: 5,
-    avatar: "/placeholder-avatar.png"
+    avatar: "/placeholder-avatar.png",
   },
   {
     id: "4",
@@ -47,27 +58,31 @@ const mockProviders: Provider[] = [
     type: "Independiente",
     city: "Guayaquil",
     rating: 5,
-    avatar: "/placeholder-avatar.png"
-  }
+    avatar: "/placeholder-avatar.png",
+  },
 ];
 
 export default function ServiceRequest() {
   const { serviceType } = useParams();
   const navigate = useNavigate();
-  
+
   // Form state
   const [description, setDescription] = useState("");
   const [selectedFile, setSelectedFile] = useState<File | null>(null);
   const [selectedDate, setSelectedDate] = useState("");
   const [selectedTime, setSelectedTime] = useState("");
-  const [paymentMethod, setPaymentMethod] = useState<"Tarjeta" | "Efectivo">("Efectivo");
-  
+  const [paymentMethod, setPaymentMethod] = useState<"Tarjeta" | "Efectivo">(
+    "Efectivo",
+  );
+
   // Modal states
   const [showProviderModal, setShowProviderModal] = useState(false);
   const [showProviderTypeModal, setShowProviderTypeModal] = useState(false);
   const [selectedProviders, setSelectedProviders] = useState<Provider[]>([]);
   const [providerSearchQuery, setProviderSearchQuery] = useState("");
-  const [providerTypeFilter, setProviderTypeFilter] = useState<"Cualquiera" | "Empresa" | "Independiente">("Cualquiera");
+  const [providerTypeFilter, setProviderTypeFilter] = useState<
+    "Cualquiera" | "Empresa" | "Independiente"
+  >("Cualquiera");
 
   const handleBack = () => {
     navigate("/dashboard");
@@ -85,10 +100,10 @@ export default function ServiceRequest() {
   };
 
   const handleProviderSelection = (provider: Provider) => {
-    setSelectedProviders(prev => {
-      const exists = prev.find(p => p.id === provider.id);
+    setSelectedProviders((prev) => {
+      const exists = prev.find((p) => p.id === provider.id);
       if (exists) {
-        return prev.filter(p => p.id !== provider.id);
+        return prev.filter((p) => p.id !== provider.id);
       } else {
         return [...prev, provider];
       }
@@ -113,14 +128,18 @@ export default function ServiceRequest() {
       selectedDate,
       selectedTime,
       paymentMethod,
-      selectedProviders
+      selectedProviders,
     });
     navigate("/requests");
   };
 
-  const filteredProviders = mockProviders.filter(provider => {
-    const matchesSearch = provider.name.toLowerCase().includes(providerSearchQuery.toLowerCase());
-    const matchesType = providerTypeFilter === "Cualquiera" || provider.type === providerTypeFilter;
+  const filteredProviders = mockProviders.filter((provider) => {
+    const matchesSearch = provider.name
+      .toLowerCase()
+      .includes(providerSearchQuery.toLowerCase());
+    const matchesType =
+      providerTypeFilter === "Cualquiera" ||
+      provider.type === providerTypeFilter;
     return matchesSearch && matchesType;
   });
 
@@ -130,7 +149,7 @@ export default function ServiceRequest() {
       <div className="bg-purple-700 text-white px-4 py-2">
         <div className="flex items-center justify-between">
           <HamburgerMenu />
-          
+
           <div className="flex-1 flex justify-center">
             <div className="bg-purple-700 rounded-full px-8 py-2">
               <h1 className="font-knewave text-2xl text-yellow-400">
@@ -139,7 +158,12 @@ export default function ServiceRequest() {
             </div>
           </div>
 
-          <Button variant="ghost" size="sm" className="text-white p-2" onClick={handleLogout}>
+          <Button
+            variant="ghost"
+            size="sm"
+            className="text-white p-2"
+            onClick={handleLogout}
+          >
             <LogOut className="h-6 w-6" />
           </Button>
         </div>
@@ -176,13 +200,19 @@ export default function ServiceRequest() {
               <span className="text-red-500">*</span>
               <div className="flex items-center space-x-2">
                 <span className="w-4 h-4 bg-purple-700 rounded"></span>
-                <span className="font-roboto text-purple-700 font-medium">Descripción:</span>
+                <span className="font-roboto text-purple-700 font-medium">
+                  Descripción:
+                </span>
               </div>
             </div>
             <Textarea
               value={description}
               onChange={(e) => setDescription(e.target.value)}
-              placeholder={serviceType ? "Describa su solicitud..." : "Detalles de su hogar/ubicación o referencias..."}
+              placeholder={
+                serviceType
+                  ? "Describa su solicitud..."
+                  : "Detalles de su hogar/ubicación o referencias..."
+              }
               className="w-full min-h-20 bg-gray-100 border-none rounded-lg text-gray-700 placeholder:text-gray-400 font-abeezee resize-none"
             />
           </div>
@@ -191,7 +221,9 @@ export default function ServiceRequest() {
           <div className="space-y-2">
             <div className="flex items-center space-x-2">
               <Upload className="h-5 w-5 text-purple-700" />
-              <span className="font-roboto text-purple-700 font-medium">Subir foto (opcional):</span>
+              <span className="font-roboto text-purple-700 font-medium">
+                Subir foto (opcional):
+              </span>
             </div>
             <div className="relative">
               <input
@@ -219,7 +251,9 @@ export default function ServiceRequest() {
               <div className="flex items-center space-x-2">
                 <span className="text-red-500">*</span>
                 <Calendar className="h-5 w-5 text-purple-700" />
-                <span className="font-roboto text-purple-700 font-medium">Fecha/hora:</span>
+                <span className="font-roboto text-purple-700 font-medium">
+                  Fecha/hora:
+                </span>
               </div>
               <div className="flex space-x-4">
                 <Input
@@ -257,29 +291,34 @@ export default function ServiceRequest() {
               <h2 className="font-roboto text-2xl font-bold text-black mb-4">
                 Proveedores disponibles
               </h2>
-              
+
               <div className="space-y-3">
                 <div className="flex items-center space-x-2">
                   <span className="text-red-500">*</span>
                   <Users className="h-5 w-5 text-purple-700" />
-                  <span className="font-roboto text-purple-700 font-medium">Selección de proveedores:</span>
+                  <span className="font-roboto text-purple-700 font-medium">
+                    Selección de proveedores:
+                  </span>
                 </div>
-                
+
                 <Button
                   onClick={() => setShowProviderModal(true)}
                   className="w-full bg-purple-700 hover:bg-purple-800 text-white font-abeezee text-lg py-4 rounded-lg"
                 >
                   Ver proveedores disponibles
                 </Button>
-                
+
                 {selectedProviders.length > 0 && (
                   <div className="mt-4 space-y-2">
                     <p className="font-abeezee text-sm text-gray-600">
                       Proveedores seleccionados: {selectedProviders.length}
                     </p>
                     <div className="flex flex-wrap gap-2">
-                      {selectedProviders.map(provider => (
-                        <div key={provider.id} className="bg-purple-100 text-purple-700 px-3 py-1 rounded-full text-sm">
+                      {selectedProviders.map((provider) => (
+                        <div
+                          key={provider.id}
+                          className="bg-purple-100 text-purple-700 px-3 py-1 rounded-full text-sm"
+                        >
                           {provider.name}
                         </div>
                       ))}
@@ -294,14 +333,16 @@ export default function ServiceRequest() {
               <h2 className="font-roboto text-2xl font-bold text-black mb-4">
                 Detalles del pago
               </h2>
-              
+
               <div className="space-y-3">
                 <div className="flex items-center space-x-2">
                   <span className="text-red-500">*</span>
                   <CreditCard className="h-5 w-5 text-purple-700" />
-                  <span className="font-roboto text-purple-700 font-medium">Selección de pago:</span>
+                  <span className="font-roboto text-purple-700 font-medium">
+                    Selección de pago:
+                  </span>
                 </div>
-                
+
                 <div className="flex space-x-4">
                   <label className="flex items-center space-x-2 cursor-pointer">
                     <input
@@ -309,19 +350,23 @@ export default function ServiceRequest() {
                       name="paymentMethod"
                       value="Tarjeta"
                       checked={paymentMethod === "Tarjeta"}
-                      onChange={(e) => setPaymentMethod(e.target.value as "Tarjeta")}
+                      onChange={(e) =>
+                        setPaymentMethod(e.target.value as "Tarjeta")
+                      }
                       className="text-purple-700"
                     />
                     <span className="font-abeezee text-gray-700">Tarjeta</span>
                   </label>
-                  
+
                   <label className="flex items-center space-x-2 cursor-pointer">
                     <input
                       type="radio"
                       name="paymentMethod"
                       value="Efectivo"
                       checked={paymentMethod === "Efectivo"}
-                      onChange={(e) => setPaymentMethod(e.target.value as "Efectivo")}
+                      onChange={(e) =>
+                        setPaymentMethod(e.target.value as "Efectivo")
+                      }
                       className="text-purple-700"
                     />
                     <span className="font-abeezee text-gray-700">Efectivo</span>
@@ -374,14 +419,18 @@ export default function ServiceRequest() {
                   />
                   <label className="flex items-center space-x-2 ml-4">
                     <input type="radio" name="showAll" className="w-4 h-4" />
-                    <span className="font-abeezee text-black text-sm">Todos</span>
+                    <span className="font-abeezee text-black text-sm">
+                      Todos
+                    </span>
                   </label>
                 </div>
               </div>
 
               {/* Provider Type Filter */}
               <div className="flex justify-between items-center bg-gray-100 rounded-lg p-3 border-b border-gray-300">
-                <span className="font-abeezee text-black text-sm">Tipo de Proveedor</span>
+                <span className="font-abeezee text-black text-sm">
+                  Tipo de Proveedor
+                </span>
                 <button
                   onClick={() => setShowProviderTypeModal(true)}
                   className="font-abeezee text-black text-sm"
@@ -420,19 +469,35 @@ export default function ServiceRequest() {
                         </button>
                         <div className="flex items-center mt-1">
                           {[...Array(5)].map((_, i) => (
-                            <svg key={i} className="w-4 h-4 text-white mr-1" viewBox="0 0 14 16" fill="none">
-                              <path d="M7.00008 1.33301L8.80258 5.50634L12.8334 6.17967L9.91675 9.42634L10.6051 14.013L7.00008 11.8463L3.39508 14.013L4.08341 9.42634L1.16675 6.17967L5.19758 5.50634L7.00008 1.33301Z" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                            <svg
+                              key={i}
+                              className="w-4 h-4 text-white mr-1"
+                              viewBox="0 0 14 16"
+                              fill="none"
+                            >
+                              <path
+                                d="M7.00008 1.33301L8.80258 5.50634L12.8334 6.17967L9.91675 9.42634L10.6051 14.013L7.00008 11.8463L3.39508 14.013L4.08341 9.42634L1.16675 6.17967L5.19758 5.50634L7.00008 1.33301Z"
+                                stroke="white"
+                                strokeWidth="2"
+                                strokeLinecap="round"
+                                strokeLinejoin="round"
+                              />
                             </svg>
                           ))}
                         </div>
                         <p className="font-abeezee text-xs mt-1">
-                          <span className="font-bold">Ciudad:</span> {provider.city}
+                          <span className="font-bold">Ciudad:</span>{" "}
+                          {provider.city}
                         </p>
                       </div>
 
                       <div className="w-10 h-10 bg-yellow-400 rounded-full flex items-center justify-center">
-                        <div className={`w-5 h-5 rounded-full border-2 ${selectedProviders.find(p => p.id === provider.id) ? 'bg-white border-gray-400' : 'border-gray-400'} flex items-center justify-center`}>
-                          {selectedProviders.find(p => p.id === provider.id) && (
+                        <div
+                          className={`w-5 h-5 rounded-full border-2 ${selectedProviders.find((p) => p.id === provider.id) ? "bg-white border-gray-400" : "border-gray-400"} flex items-center justify-center`}
+                        >
+                          {selectedProviders.find(
+                            (p) => p.id === provider.id,
+                          ) && (
                             <div className="w-2 h-2 bg-yellow-400 rounded-full"></div>
                           )}
                         </div>
@@ -468,7 +533,9 @@ export default function ServiceRequest() {
           <div className="bg-white rounded-3xl w-full max-w-sm">
             <div className="p-6 space-y-0">
               <div className="text-center pb-4">
-                <h3 className="font-roboto text-xl font-bold text-black mb-2">Tipo de proveedor</h3>
+                <h3 className="font-roboto text-xl font-bold text-black mb-2">
+                  Tipo de proveedor
+                </h3>
                 <p className="font-roboto text-black text-lg leading-tight">
                   Seleccione un filtro para mostrar el contenido
                 </p>
@@ -481,9 +548,13 @@ export default function ServiceRequest() {
                 {["Cualquiera", "Empresa", "Independiente"].map((type) => (
                   <button
                     key={type}
-                    onClick={() => setProviderTypeFilter(type as typeof providerTypeFilter)}
+                    onClick={() =>
+                      setProviderTypeFilter(type as typeof providerTypeFilter)
+                    }
                     className={`w-full py-4 text-center font-roboto text-base ${
-                      providerTypeFilter === type ? "text-black font-medium bg-gray-50" : "text-black"
+                      providerTypeFilter === type
+                        ? "text-black font-medium bg-gray-50"
+                        : "text-black"
                     }`}
                   >
                     {type}

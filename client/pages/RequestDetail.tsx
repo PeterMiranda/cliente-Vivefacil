@@ -1,6 +1,13 @@
 import { useNavigate, useParams } from "react-router-dom";
 import { Button } from "@/components/ui/button";
-import { ChevronLeft, LogOut, MapPin, Edit, Image, AlertCircle } from "lucide-react";
+import {
+  ChevronLeft,
+  LogOut,
+  MapPin,
+  Edit,
+  Image,
+  AlertCircle,
+} from "lucide-react";
 import HamburgerMenu from "@/components/HamburgerMenu";
 
 export default function RequestDetail() {
@@ -16,7 +23,7 @@ export default function RequestDetail() {
   };
 
   const handleProviderClick = () => {
-    navigate('/provider/1');
+    navigate("/provider/1");
   };
 
   return (
@@ -25,7 +32,7 @@ export default function RequestDetail() {
       <div className="bg-purple-700 text-white px-4 py-2">
         <div className="flex items-center justify-between">
           <HamburgerMenu />
-          
+
           <div className="flex-1 flex justify-center">
             <div className="bg-purple-700 rounded-full px-8 py-2">
               <h1 className="font-knewave text-2xl text-yellow-400">
@@ -34,7 +41,12 @@ export default function RequestDetail() {
             </div>
           </div>
 
-          <Button variant="ghost" size="sm" className="text-white p-2" onClick={handleLogout}>
+          <Button
+            variant="ghost"
+            size="sm"
+            className="text-white p-2"
+            onClick={handleLogout}
+          >
             <LogOut className="h-6 w-6" />
           </Button>
         </div>
@@ -68,7 +80,8 @@ export default function RequestDetail() {
             <AlertCircle className="h-9 w-9 text-black flex-shrink-0" />
             <div className="flex-1">
               <p className="font-abeezee text-purple-700 text-sm leading-tight">
-                La solicitud se encuentra en estado asignada. Puede confirma que el servicio se ha realizado efectivamente con el siguiente botón
+                La solicitud se encuentra en estado asignada. Puede confirma que
+                el servicio se ha realizado efectivamente con el siguiente botón
               </p>
             </div>
           </div>
@@ -92,11 +105,24 @@ export default function RequestDetail() {
                 </div>
 
                 <div className="flex-1 text-left">
-                  <div className="font-abeezee text-sm font-medium">Sebastian Ceballos</div>
+                  <div className="font-abeezee text-sm font-medium">
+                    Sebastian Ceballos
+                  </div>
                   <div className="flex items-center mt-1">
                     {[...Array(5)].map((_, i) => (
-                      <svg key={i} className="w-4 h-4 text-white mr-1" viewBox="0 0 14 16" fill="none">
-                        <path d="M7.00008 1.33301L8.80258 5.50634L12.8334 6.17967L9.91675 9.42634L10.6051 14.013L7.00008 11.8463L3.39508 14.013L4.08341 9.42634L1.16675 6.17967L5.19758 5.50634L7.00008 1.33301Z" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                      <svg
+                        key={i}
+                        className="w-4 h-4 text-white mr-1"
+                        viewBox="0 0 14 16"
+                        fill="none"
+                      >
+                        <path
+                          d="M7.00008 1.33301L8.80258 5.50634L12.8334 6.17967L9.91675 9.42634L10.6051 14.013L7.00008 11.8463L3.39508 14.013L4.08341 9.42634L1.16675 6.17967L5.19758 5.50634L7.00008 1.33301Z"
+                          stroke="white"
+                          strokeWidth="2"
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                        />
                       </svg>
                     ))}
                   </div>
@@ -119,7 +145,9 @@ export default function RequestDetail() {
           <div className="space-y-3">
             <div className="flex items-center space-x-2">
               <MapPin className="h-5 w-5 text-purple-700" />
-              <span className="font-roboto text-purple-700 font-medium">Ubicación:</span>
+              <span className="font-roboto text-purple-700 font-medium">
+                Ubicación:
+              </span>
             </div>
             <Button className="w-full bg-purple-700 hover:bg-purple-800 text-white font-abeezee text-lg py-3 rounded-lg">
               Ver en el mapa
@@ -130,7 +158,9 @@ export default function RequestDetail() {
           <div className="space-y-3">
             <div className="flex items-center space-x-2">
               <Edit className="h-5 w-5 text-purple-700" />
-              <span className="font-roboto text-purple-700 font-medium">Descripción:</span>
+              <span className="font-roboto text-purple-700 font-medium">
+                Descripción:
+              </span>
             </div>
             <p className="font-abeezee text-gray-700">ayuda con proyecto</p>
           </div>
@@ -139,7 +169,9 @@ export default function RequestDetail() {
           <div className="space-y-3">
             <div className="flex items-center space-x-2">
               <Image className="h-5 w-5 text-purple-700" />
-              <span className="font-roboto text-purple-700 font-medium">Foto de referencia:</span>
+              <span className="font-roboto text-purple-700 font-medium">
+                Foto de referencia:
+              </span>
             </div>
             <div className="rounded-lg overflow-hidden">
               <img
