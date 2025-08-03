@@ -59,6 +59,10 @@ export default function History() {
     setShowConfirmModal(true);
   };
 
+  const handleRateProvider = () => {
+    setShowRatingModal(true);
+  };
+
   const handleCloseModal = () => {
     setShowConfirmModal(false);
   };
