@@ -1,6 +1,7 @@
 import { useNavigate, useParams } from "react-router-dom";
 import { Button } from "@/components/ui/button";
-import { ChevronLeft, Menu, LogOut } from "lucide-react";
+import { ChevronLeft, LogOut } from "lucide-react";
+import HamburgerMenu from "@/components/HamburgerMenu";
 
 export default function RequestDetail() {
   const { requestId } = useParams();
