@@ -400,11 +400,18 @@ export default function ServiceRequest() {
                       <div className="w-10 h-10 bg-yellow-400 rounded-full flex items-center justify-center">
                         <User className="h-6 w-6 text-purple-700" />
                       </div>
-                      
+
                       <div className="flex-1">
-                        <h3 className="font-abeezee text-sm font-medium">
+                        <button
+                          onClick={(e) => {
+                            e.stopPropagation();
+                            setShowProviderModal(false);
+                            navigate(`/provider/${provider.id}`);
+                          }}
+                          className="font-abeezee text-sm font-medium hover:underline text-left"
+                        >
                           {provider.name} - {provider.type}
-                        </h3>
+                        </button>
                         <div className="flex items-center space-x-1 mt-1">
                           {[...Array(provider.rating)].map((_, i) => (
                             <Star key={i} className="h-3 w-3 text-white" />
