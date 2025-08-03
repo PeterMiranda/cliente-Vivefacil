@@ -102,6 +102,7 @@ export default function Dashboard() {
           {serviceCategories.map((category) => (
             <div
               key={category.id}
+              onClick={() => handleServiceClick(category.name)}
               className="bg-white rounded-xl shadow-lg border border-gray-200 p-6 flex flex-col items-center justify-center space-y-3 hover:shadow-xl transition-shadow cursor-pointer"
             >
               <div className="text-4xl mb-2">{category.icon}</div>
