@@ -1,7 +1,8 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { Button } from "@/components/ui/button";
-import { ChevronLeft, Menu, LogOut, ChevronDown } from "lucide-react";
+import { ChevronLeft, LogOut, ChevronDown } from "lucide-react";
+import HamburgerMenu from "@/components/HamburgerMenu";
 
 interface RequestItem {
   id: string;
