@@ -466,24 +466,24 @@ export default function ServiceRequest() {
       {showProviderTypeModal && (
         <div className="fixed inset-0 bg-black bg-opacity-35 flex items-center justify-center p-4 z-50">
           <div className="bg-white rounded-3xl w-full max-w-sm">
-            <div className="p-6 space-y-4">
-              <div className="text-center space-y-2">
-                <h3 className="font-roboto text-xl font-bold text-black">Tipo de proveedor</h3>
-                <p className="font-roboto text-gray-600 text-sm">
+            <div className="p-6 space-y-0">
+              <div className="text-center pb-4">
+                <h3 className="font-roboto text-xl font-bold text-black mb-2">Tipo de proveedor</h3>
+                <p className="font-roboto text-black text-lg leading-tight">
                   Seleccione un filtro para mostrar el contenido
                 </p>
-                <p className="font-roboto text-gray-600 text-sm">
+                <p className="font-roboto text-black text-lg leading-tight mt-2">
                   Elija solo uno
                 </p>
               </div>
 
-              <div className="space-y-1">
+              <div className="divide-y divide-black">
                 {["Cualquiera", "Empresa", "Independiente"].map((type) => (
                   <button
                     key={type}
                     onClick={() => setProviderTypeFilter(type as typeof providerTypeFilter)}
-                    className={`w-full py-3 text-center border-t border-gray-200 font-roboto ${
-                      providerTypeFilter === type ? "text-purple-700 font-bold" : "text-black"
+                    className={`w-full py-4 text-center font-roboto text-base ${
+                      providerTypeFilter === type ? "text-black font-medium bg-gray-50" : "text-black"
                     }`}
                   >
                     {type}
@@ -491,16 +491,16 @@ export default function ServiceRequest() {
                 ))}
               </div>
 
-              <div className="flex border-t border-gray-200">
+              <div className="flex border-t border-black">
                 <button
                   onClick={() => setShowProviderTypeModal(false)}
-                  className="flex-1 py-3 text-center font-roboto text-purple-700"
+                  className="flex-1 py-4 text-center font-roboto text-purple-700 text-base border-r border-black rounded-bl-3xl"
                 >
                   Cancel
                 </button>
                 <button
                   onClick={() => setShowProviderTypeModal(false)}
-                  className="flex-1 py-3 text-center font-roboto text-purple-700 font-bold border-l border-gray-200"
+                  className="flex-1 py-4 text-center font-roboto text-purple-700 font-bold text-base rounded-br-3xl"
                 >
                   OK
                 </button>
