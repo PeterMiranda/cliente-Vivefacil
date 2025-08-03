@@ -36,6 +36,7 @@ const App = () => (
           <Route path="/history" element={<History />} />
           <Route path="/service-request" element={<ServiceRequest />} />
           <Route path="/service-request/:serviceType" element={<ServiceRequest />} />
+          <Route path="/provider/:providerId" element={<ProviderProfile />} />
           <Route path="/demo" element={<Index />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
