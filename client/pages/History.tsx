@@ -37,6 +37,8 @@ export default function History() {
   const [selectedRequest, setSelectedRequest] = useState<HistoryRequest | null>(null);
   const [showConfirmModal, setShowConfirmModal] = useState(false);
   const [showRatingModal, setShowRatingModal] = useState(false);
+  const [rating, setRating] = useState(0);
+  const [ratingComment, setRatingComment] = useState("");
   const navigate = useNavigate();
 
   const handleBack = () => {
