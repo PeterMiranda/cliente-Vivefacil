@@ -15,6 +15,7 @@ import Chat from "./pages/Chat";
 import ChatConversation from "./pages/ChatConversation";
 import History from "./pages/History";
 import ServiceRequest from "./pages/ServiceRequest";
+import ProviderProfile from "./pages/ProviderProfile";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
