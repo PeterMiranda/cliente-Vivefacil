@@ -144,7 +144,7 @@ export default function Dashboard() {
       </div>
 
       {/* Service Categories Grid */}
-      <div className="px-4 pb-20">
+      <div className="px-4 pb-48">
         <div className="grid grid-cols-2 gap-4">
           {serviceCategories.map((category) => (
             <div
@@ -162,6 +162,65 @@ export default function Dashboard() {
           ))}
         </div>
       </div>
+
+      {/* Active Request */}
+      {activeRequest && (
+        <div className="fixed bottom-16 left-0 right-0 px-0">
+          <div className="bg-purple-700 rounded-t-3xl px-4 py-4 text-white">
+            <div className="flex justify-between items-start mb-4">
+              <div className="flex items-center space-x-3">
+                <img
+                  src="https://api.builder.io/api/v1/image/assets/TEMP/45251e0596b81ea84707bce2e1d590c896fb87f6?width=104"
+                  alt="Provider"
+                  className="w-12 h-12 rounded-full"
+                />
+                <div className="space-y-1">
+                  <div className="font-abeezee text-sm tracking-wide leading-tight">
+                    {activeRequest.status}
+                  </div>
+                  <div className="font-abeezee text-sm tracking-wide leading-tight">
+                    {activeRequest.statusDetail}
+                  </div>
+                  <div className="font-abeezee text-sm tracking-wide leading-tight">
+                    {activeRequest.paymentMethod}
+                  </div>
+                </div>
+              </div>
+              <div className="flex items-start space-x-4">
+                <div className="text-right space-y-1">
+                  <div className="font-abeezee text-sm leading-tight">
+                    {activeRequest.date}
+                  </div>
+                  <div className="font-abeezee text-sm leading-tight">
+                    {activeRequest.time}
+                  </div>
+                  <div className="font-abeezee text-sm leading-tight">
+                    {activeRequest.serviceName}
+                  </div>
+                </div>
+                <button
+                  onClick={handleOptionsClick}
+                  className="p-2"
+                >
+                  <img
+                    src="https://api.builder.io/api/v1/image/assets/TEMP/27d1b7be3c0de58cce7d129ffeac7600379636a2?width=94"
+                    alt="Options"
+                    className="w-6 h-6"
+                  />
+                </button>
+              </div>
+            </div>
+            <div className="border-t border-white pt-3 mb-3">
+              <div className="font-abeezee text-sm tracking-wide leading-tight">
+                {activeRequest.providerName}
+              </div>
+            </div>
+            <div className="font-abeezee text-sm tracking-wide leading-tight">
+              {activeRequest.description}
+            </div>
+          </div>
+        </div>
+      )}
 
       {/* Bottom Navigation */}
       <div className="fixed bottom-0 left-0 right-0 bg-white border-t border-gray-200 px-4 py-2">
