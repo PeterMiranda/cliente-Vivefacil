@@ -138,12 +138,18 @@ export default function History() {
                 </p>
               </div>
             </div>
-            <div className="flex justify-center mt-6">
+            <div className="flex flex-col items-center mt-6 space-y-4">
               <Button
                 onClick={handleConfirmService}
                 className="bg-purple-700 hover:bg-purple-800 text-white font-abeezee text-lg px-8 py-3 rounded-full shadow-lg"
               >
                 Confirmar servicio
+              </Button>
+              <Button
+                onClick={handleRateProvider}
+                className="bg-purple-700 hover:bg-purple-800 text-white font-abeezee text-lg px-8 py-3 rounded-full shadow-lg"
+              >
+                Calificar Proveedor
               </Button>
             </div>
           </div>
